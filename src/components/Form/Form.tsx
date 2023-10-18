@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import Panel from "../Panel/Panel";
 
 const Form = () => {
 
   const [seoChecked, setSeoChecked] = useState(false);
   const [adsChecked, setAdsChecked] = useState(false);
   const [webChecked, setWebChecked] = useState(false);
+  const [page, setPage] = useState(1);
+  const [language, setLanguage] = useState(1);
 
   const handleSeoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSeoChecked(e.target.checked);
@@ -18,7 +21,26 @@ const Form = () => {
     setWebChecked(e.target.checked);
   };
 
-  const total = (seoChecked ? 300 : 0) + (adsChecked ? 400 : 0) + (webChecked ? 500 : 0)/*+ (page * language * 30) : 0)}**/;
+  const handleMinusPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+  const handlePlusPage = () => {
+    setPage(page + 1);
+  };
+
+  const handleMinusLang = () => {
+    if (language > 1) {
+      setLanguage(language - 1);
+    }
+  };
+  const handlePlusLang = () => {
+    setLanguage(language + 1);
+  };
+
+  const total = (seoChecked ? 300 : 0) + (adsChecked ? 400 : 0) + (webChecked ? 500 + (page * language * 30) : 0 );
+
 
   useEffect(() => {
 
@@ -59,8 +81,9 @@ const Form = () => {
                 <span className="label-text text-base-100 m-3 align-top">Comprar</span>
                 <input type="checkbox" onChange={handleWebChange} checked={webChecked} className="checkbox checkbox-secondary" />
               </label>
-
-            </div>
+              {webChecked && <Panel handlePlusPage={handlePlusPage} handleMinusPage={handleMinusPage} 
+              handlePlusLang = {handlePlusLang} handleMinusLang={handleMinusLang} page={page} language={language}/>}
+          </div>
           </div>
           <div className="card w-96 bg-neutral shadow-xl py-0 m-1">
             <div className="card-body">
@@ -73,8 +96,9 @@ const Form = () => {
         </div>
       </div>
     </div>
-  )
+  );
+  };
 
-}
 
-export default Form;
+
+  export default Form;
