@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Panel from "../Panel/Panel";
+import { Link } from "react-router-dom";
 
 const Form = () => {
 
@@ -39,7 +40,7 @@ const Form = () => {
     setLanguage(language + 1);
   };
 
-  const total = (seoChecked ? 300 : 0) + (adsChecked ? 400 : 0) + (webChecked ? 500 + (page * language * 30) : 0 );
+  const total = (seoChecked ? 300 : 0) + (adsChecked ? 400 : 0) + (webChecked ? 500 + (page * language * 30) : 0);
 
 
   useEffect(() => {
@@ -49,7 +50,7 @@ const Form = () => {
   return (
     <div className="hero min-h-screen h-screen bg-base-200">
       <div className="hero-content text-center">
-        <div className="max-w-md">
+        <div className="min-w-screen">
           <div className="card w-96 bg-neutral shadow-xl py-0 m-1">
             <div className="card-body">
               <div className="card-actions justify-center">
@@ -81,9 +82,9 @@ const Form = () => {
                 <span className="label-text text-base-100 m-3 align-top">Comprar</span>
                 <input type="checkbox" onChange={handleWebChange} checked={webChecked} className="checkbox checkbox-secondary" />
               </label>
-              {webChecked && <Panel handlePlusPage={handlePlusPage} handleMinusPage={handleMinusPage} 
-              handlePlusLang = {handlePlusLang} handleMinusLang={handleMinusLang} page={page} language={language}/>}
-          </div>
+              {webChecked && <Panel handlePlusPage={handlePlusPage} handleMinusPage={handleMinusPage}
+                handlePlusLang={handlePlusLang} handleMinusLang={handleMinusLang} page={page} language={language} />}
+            </div>
           </div>
           <div className="card w-96 bg-neutral shadow-xl py-0 m-1">
             <div className="card-body">
@@ -92,13 +93,13 @@ const Form = () => {
               </div>
             </div>
           </div>
-
+          <Link to="/" className="btn btn-neutral">Inicio</Link>
         </div>
       </div>
     </div>
   );
-  };
+};
 
 
 
-  export default Form;
+export default Form;

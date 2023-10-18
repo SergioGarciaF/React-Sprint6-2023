@@ -1,13 +1,11 @@
 
 import './App.css'
-import Form from './components/Form/Form'
+import Routes from './application/Routes'
 
 function App() {
-
-
   return (
     <>
-    <Form/>
+    <Routes/>
     </>
   )
 }
