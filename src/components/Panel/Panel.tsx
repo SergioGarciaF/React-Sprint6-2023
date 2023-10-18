@@ -57,7 +57,7 @@ const Panel: React.FC<PanelProps> = ({
           readOnly
         />
         <button className="text-neutral-content m-2" onClick={handlePlusLang}>
-          +
+            +
         </button>
       </StyledLabel>
     </Styled>
