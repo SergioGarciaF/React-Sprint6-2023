@@ -37,7 +37,7 @@ const Panel: React.FC<PanelProps> = ({
         </button>
         <input
           type="text"
-          defaultValue={page}
+          value={page}
           className="input input-bordered text-center w-10 input-xs max-w-xs"
           readOnly
         />
@@ -52,7 +52,7 @@ const Panel: React.FC<PanelProps> = ({
         </button>
         <input
           type="text"
-          defaultValue={language}
+          value={language}
           className="input input-bordered text-center w-10 input-xs max-w-xs"
           readOnly
         />

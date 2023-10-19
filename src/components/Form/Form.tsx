@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Panel from "../Panel/Panel";
 import { Link } from "react-router-dom";
+import { BudgetList } from "../BudgetList/BudgetList";
 
 const Form = () => {
 
@@ -9,6 +10,8 @@ const Form = () => {
   const [webChecked, setWebChecked] = useState(false);
   const [page, setPage] = useState(1);
   const [language, setLanguage] = useState(1);
+  
+
 
   const handleSeoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSeoChecked(e.target.checked);
@@ -40,6 +43,8 @@ const Form = () => {
     setLanguage(language + 1);
   };
 
+  
+
   const total = (seoChecked ? 300 : 0) + (adsChecked ? 400 : 0) + (webChecked ? 500 + (page * language * 30) : 0);
 
 
@@ -48,7 +53,7 @@ const Form = () => {
   }, [total]);
 
   return (
-    <div className="hero min-h-screen h-screen bg-base-200">
+    <div className="hero min-h-screen h-screen w-min-full">
       <div className="hero-content text-center">
         <div className="min-w-screen">
           <div className="card w-96 bg-neutral shadow-xl py-0 m-1">
@@ -86,6 +91,7 @@ const Form = () => {
                 handlePlusLang={handlePlusLang} handleMinusLang={handleMinusLang} page={page} language={language} />}
             </div>
           </div>
+          <BudgetList adsChecked={adsChecked} seoChecked={seoChecked} webChecked={webChecked} page={page} language={language} total={total}/>
           <div className="card w-96 bg-neutral shadow-xl py-0 m-1">
             <div className="card-body">
               <div className="card-actions justify-center">
